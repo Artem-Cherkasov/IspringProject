@@ -1,0 +1,60 @@
+.text-editor 
+{
+    background-color: #99ff99;	
+	height: 130px;
+	width: 300px;
+	border-right: 1px solid black;
+}
+
+.font-field 
+{
+    background-color: #ccffcc; 
+	width: 200px;
+	height: 21px;
+	margin-top: 20px;
+	margin-bottom: 10px;
+	margin-left: 10px;
+	border: 2px solid black;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	padding-left: 2px;  
+}
+
+.texteditor-middle
+{	
+	display: flex;
+	flex-direction: row;
+}
+
+.size-field 
+{
+	background-color: #ccffcc; 
+	width: 80px;
+	height: 20px;
+	border: 2px solid black;
+	margin-left: 10px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	padding-left: 2px;
+
+}
+
+.text-stylebuttons 
+{
+	display: flex;
+	flex-direction: row;
+	margin-left: 60px;
+}
+
+.texteditor-bottom 
+{
+	background-color: #99ff99;	
+	margin-top: 20px;
+	border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.texteditor-description 
+{
+	margin-left: 120px;	
+}

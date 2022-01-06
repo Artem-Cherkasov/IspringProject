@@ -1,0 +1,20 @@
+.backgroundeditor 
+{
+    height: 130px;
+    width: 150px;
+    background-color: #99ff99;	
+    border-right: 1px solid black;
+}
+
+.backgroundeditor-bottom 
+{
+    background-color: #99ff99;	
+	margin-top: 8px;
+	border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.backgroundeditor-description
+{
+    margin-left: 57px;	
+}

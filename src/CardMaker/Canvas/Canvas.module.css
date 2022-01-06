@@ -1,0 +1,23 @@
+.canvas
+{
+    position: relative;
+    margin-top: 30px;
+    border: 1px solid black;
+    z-index: auto;
+
+}
+
+.filter 
+{
+    position: absolute;
+    width: 600px;
+    height: 800px;
+    z-index: 2;
+}
+
+.element
+{
+    z-index: 1;
+}
+
+

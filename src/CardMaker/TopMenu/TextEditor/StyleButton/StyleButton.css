@@ -1,0 +1,15 @@
+.stylebutton 
+{
+	background-color: #ccffcc;	
+	margin-right: 15px;
+	border: 2px solid black;
+	width: 25px;
+	height: 25px;
+}
+
+.stylebutton__text 
+{
+	margin-top: 1px;
+	margin-left: 7px;
+	font-weight: 1000;
+}

@@ -1,0 +1,33 @@
+.artobjecteditor
+{
+    background-color: #99ff99;	
+	height: 130px;
+	width: 180px;
+	border-right: 1px solid black;
+}
+
+.artobjecteditorsizefield
+{
+    display: flex;
+    flex-direction: row;
+}
+
+.mul 
+{
+    font-weight: 500;
+    margin-left: 7px;
+    margin-top: 22px;
+}
+
+.artobjecteditorbottom
+{
+    background-color: #99ff99;	
+	margin-top: 11px;
+	border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.artobjecteditordescription
+{
+    margin-left: 40px;	
+}

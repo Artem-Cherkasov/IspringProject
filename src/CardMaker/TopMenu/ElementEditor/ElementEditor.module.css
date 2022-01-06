@@ -1,0 +1,20 @@
+.elementeditor 
+{
+    background-color: #99ff99;	
+	height: 130px;
+	width: 150px;
+	border-right: 1px solid black;
+}
+
+.elementeditorbottom 
+{
+    width: 150px;
+	border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    margin-top: 8px;
+}
+
+.elementeditordescription 
+{
+    margin-left: 40px;
+}

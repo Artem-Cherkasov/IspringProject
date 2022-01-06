@@ -1,0 +1,60 @@
+.imgeditor 
+{
+    background-color: #99ff99;	
+	height: 130px;
+	width: 350px;
+	border-right: 1px solid black;
+}
+
+.imgeditortop 
+{
+    display: flex;
+    flex-direction: row;
+}
+
+.imgeditorsizefield 
+{
+    display: flex;
+    flex-direction: row;
+}
+
+.multiplication 
+{
+    font-weight: 500;
+    margin-right: 10px;
+    margin-top: 2px;
+}
+
+.imgeditorbottom 
+{
+	background-color: #99ff99;	
+	margin-top: 5px;
+	border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.imgeditordescription 
+{
+	margin-left: 120px;	
+}
+
+.imgsizefield 
+{
+    height: 21px;
+    width: 70px;
+    margin-left: 10px;
+    outline: none;
+    margin-right: 20px;
+    background-color: #ccffcc; 
+    border: 2px solid black;
+}
+
+.insertingfromPCbutton 
+{
+    margin-top: px;
+    margin-left: 0px;
+    height: 40px;
+ 
+    border: 2px solid black;
+    background-color: #ccffcc;
+}

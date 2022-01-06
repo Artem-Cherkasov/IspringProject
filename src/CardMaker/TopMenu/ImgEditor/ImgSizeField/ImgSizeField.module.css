@@ -1,0 +1,10 @@
+.imgsizefield 
+{
+    height: 21px;
+    width: 70px;
+    margin-left: 10px;
+    outline: none;
+    margin-right: 20px;
+    background-color: #ccffcc; 
+    border: 2px solid black;
+}

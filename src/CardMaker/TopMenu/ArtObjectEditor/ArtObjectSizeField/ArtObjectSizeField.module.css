@@ -1,0 +1,10 @@
+.artobjectsizefield 
+{
+    height: 21px;
+    width: 60px;
+    margin-left: 7px;
+    margin-top: 20px;
+    background-color: #ccffcc; 
+    border: 2px solid black;
+    outline: none;
+}

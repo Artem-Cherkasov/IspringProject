@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Luxurious+Roman&family=Oswald&family=The+Nautigal&display=swap');
+
 .texteditor 
 {
     background-color: #99ff99;	
@@ -8,16 +10,12 @@
 
 .fontfield 
 {
-    background-color: #ccffcc; 
-	width: 100px;
-	height: 21px;
-	margin-top: 20px;
+	outline: none;
+	width: 110px;
+	height: 35px;
+	margin-top: 19px;
 	margin-bottom: 10px;
 	margin-left: 10px;
-	border: 2px solid black;
-	padding-top: 2px;
-	padding-bottom: 2px;
-	padding-left: 2px;  
 }
 
 .texteditortop 
@@ -34,7 +32,7 @@
 
 .sizefield 
 {
-	background-color: #ccffcc; 
+	outline: none;
 	width: 80px;
 	height: 20px;
 	border: 2px solid black;
@@ -49,13 +47,13 @@
 {
 	display: flex;
 	flex-direction: row;
-	margin-left: 60px;
+	margin-left: 30px;
 }
 
 .texteditorbottom 
 {
 	background-color: #99ff99;	
-	margin-top: 20px;
+	margin-top: 15px;
 	border-top: 1px solid black;
     border-bottom: 1px solid black;
 }
@@ -79,4 +77,26 @@
 	margin-top: 1px;
 	margin-left: 7px;
 	font-weight: 1000;
+}
+
+.colorbutton 
+{
+	width: 25px;
+	height: 25px;
+}
+
+.LuxuriousRoman
+{
+	font-family: 'Luxurious Roman';
+}
+
+.TheNautigal
+{
+	font-family: 'The Nautigal';
+	font-weight: 800;
+}
+
+.Oswald
+{
+	font-family: 'Oswald'
 }

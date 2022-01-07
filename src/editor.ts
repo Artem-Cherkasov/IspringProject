@@ -1,5 +1,5 @@
 import { type } from "os"
-import { CardMakerType } from "./CardMakerTypes"
+import { CardMakerType, TextConst } from "./CardMakerTypes"
 import { testCardMaker } from "./TestData"
 
 let cardMaker: CardMakerType = testCardMaker
@@ -112,19 +112,16 @@ export function createTextElement(cardMaker: CardMakerType, newId: number): Card
                 {
                     id: newId,
                     type: 'text',
+                    text: 'Новый текст',
+                    fontFamily: 'Calibri',
                     width: standartWidthElement,
                     height: standartHeightElement,
                     posX: cardMaker.canvas.width / 2,
                     posY: cardMaker.canvas.height / 2,
-                    text: {
-                        text: 'Новый текст',
-                        size: standartSizeText,
-                        bold: false,
-                        italic: false,
-                        underline: false,
-                        fontFamily: 'Calibri',
-                    },
-                    
+                    size: standartSizeText,
+                    bold: false,
+                    italic: false,
+                    underline: false,                    
                 }
             ],    
         }
@@ -222,6 +219,108 @@ export function createImgElement(cardMaker: CardMakerType, { newId, newSrc, widt
                     },
                 }
             ],    
+        }
+    };
+}
+
+type editTxtParam = {
+    id: number,
+    text: string
+}
+
+export function editTxt(cardMaker: CardMakerType, { id, text }: editTxtParam): CardMakerType {
+    return {
+        ...cardMaker,
+        canvas: {
+            ...cardMaker.canvas,
+            elementList: cardMaker.canvas.elementList.map(element => {
+                if (element.id == id) {
+                    return {
+                        ...element,
+                        text
+                    }
+                }
+                return {...element}
+            })
+        }
+    };
+}
+
+enum CollectionOfArtObject {
+    cloud = 'cloud.png',
+    sun = 'Happy_Cloud.svg'
+}
+
+type createArtObjElementParam = {
+    newId: number,
+    type: string
+}
+
+export function createArtObjElement(cardMaker: CardMakerType, { newId, type }: createArtObjElementParam): CardMakerType {
+    const standartElementWidth = 200;
+    const standartElementHeight = 200;
+
+    if (type == 'cloud') {
+        type = CollectionOfArtObject.cloud;
+    } else if (type == 'sun') {
+        type = CollectionOfArtObject.sun
+    }
+
+    return {
+        ...cardMaker,
+        canvas: {
+            ...cardMaker.canvas,
+            elementList: [
+                ...cardMaker.canvas.elementList,
+                {
+                    id: newId,
+                    type: 'artObj',                
+                    width: standartElementWidth,
+                    height: standartElementHeight,
+                    posX: cardMaker.canvas.width / 2,
+                    posY: cardMaker.canvas.height / 2,
+                    artObj: {
+                        type: type
+                    },
+                }
+            ],    
+        }
+    };
+}
+
+type editFontFamilyParam = {
+    id: number,
+    newFont: string
+}
+
+export function editFontFamily(cardMaker: CardMakerType, { id, newFont }: editFontFamilyParam): CardMakerType {
+    console.log(id, newFont)
+    return {
+        ...cardMaker,
+        canvas: {
+            ...cardMaker.canvas,
+            elementList: cardMaker.canvas.elementList.map(element => {
+                if (element.id == id) {
+                    return {
+                        ...element,
+                        fontFamily: newFont,
+                    }
+                }
+                return {...element}
+            })
+        }
+    };
+}
+
+export function addBackgroundImg(cardMaker: CardMakerType, newSrc: string): CardMakerType {
+    return {
+        ...cardMaker,
+        canvas: {
+            ...cardMaker.canvas,
+            background: {
+                color: null,
+                src: newSrc,
+            },    
         }
     };
 }

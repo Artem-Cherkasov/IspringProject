@@ -3,8 +3,7 @@ import { dispatch, resetSelected, selectingElement } from '../../editor';
 
 export function useSelectedElements(
     elementId: number,
-    element: RefObject<HTMLElement>,
-): void {
+    element: RefObject<HTMLElement>): void {
 
     useEffect(() => {
 

@@ -1,5 +1,5 @@
 import styles from "./Canvas.module.css"
-import { CanvasUnit, TextUnit, Img, ArtObj, CanvasElement, CardMakerType} from "../../CardMakerTypes"
+import { CanvasUnit, TextUnit, CanvasElement, CardMakerType, TextConst, ImgConst, ArtObjConst} from "../../CardMakerTypes"
 import { ReactElement } from "react";
 import TextElement from "./TextElement/TextElement";
 import ImgElement from "./ImgElement/ImgElement";
@@ -30,14 +30,14 @@ function Canvas(props: CanvasProps) {
     let elementList: ReactElement[] = [];
     props.cardMaker.canvas.elementList.forEach(element =>{
         switch(element.type) {
-            case 'text':
-                elementList.push(<TextElement textElement={element as CanvasElement} />);
+            case "text":
+                elementList.push(<TextElement textElement={element as TextConst} />);
                 break;
             case 'img':
-                elementList.push(<ImgElement imgElement={element as CanvasElement} />);
+                elementList.push(<ImgElement imgElement={element as ImgConst} />);
                 break;
             case 'artObj':
-                elementList.push(<ArtObjElement artObjElement={element as CanvasElement} />);
+                elementList.push(<ArtObjElement artObjElement={element as ArtObjConst} />);
                 break;
         } 
     });

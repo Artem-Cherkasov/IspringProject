@@ -32,34 +32,55 @@ export enum CollectionOfArtObject {
     flower = 'object path',
 }
 
-export type ArtObj = {
+export type ArtObjUnit = {
     readonly type: string,
 }
 
-export type Img = {
+export type ImgUnit = {
     readonly src: string,
 }
 
 export type TextUnit = {
-    readonly text: string,
-    readonly size: number,
-    readonly bold: boolean,
-    readonly italic: boolean,
-    readonly underline: boolean,
-    readonly fontFamily: string,
+
 }
 
-export type CanvasElement = {
+export type TextConst = {
     readonly id: number,
-    readonly type: string,
+    readonly type: 'text',
+    readonly text: string,
+    readonly fontFamily: string,
     readonly width: number,
     readonly height: number,
     readonly posX: number,
     readonly posY: number,
-    readonly text?: TextUnit,
-    readonly img?: Img,
-    readonly artObj?: ArtObj,
+    readonly size: number,
+    readonly bold: boolean,
+    readonly italic: boolean,
+    readonly underline: boolean,
 }
+
+export type ImgConst = {
+    readonly id: number,
+    readonly type: 'img',
+    readonly width: number,
+    readonly height: number,
+    readonly posX: number,
+    readonly posY: number,
+    readonly img: ImgUnit,
+}
+
+export type ArtObjConst = {
+    readonly id: number,
+    readonly type: 'artObj',
+    readonly width: number,
+    readonly height: number,
+    readonly posX: number,
+    readonly posY: number,
+    readonly artObj: ArtObjUnit,
+}
+
+export type CanvasElement = TextConst | ImgConst | ArtObjConst
+   
 
 export type Background = {
     readonly color: string | null,

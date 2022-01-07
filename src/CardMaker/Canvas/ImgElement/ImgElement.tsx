@@ -1,11 +1,11 @@
 import { useRef } from 'react'
-import { CanvasElement } from '../../../CardMakerTypes'
+import { CanvasElement, ImgConst } from '../../../CardMakerTypes'
 import { useDragnDrop } from '../useDragnDrop';
 import { useSelectedElements } from '../useSelectedElement';
 import styles from './ImgElement.module.css'
 
 type ImgElementProps = {
-    imgElement: CanvasElement,
+    imgElement: ImgConst,
 }
 
 function ImgElement(props: ImgElementProps) {
@@ -32,7 +32,7 @@ function ImgElement(props: ImgElementProps) {
         left: props.imgElement.posX,
         width: props.imgElement.width,
         height: props.imgElement.height,
-        src: props.imgElement.img?.src
+        src: props.imgElement.img.src
     }
 
     return(

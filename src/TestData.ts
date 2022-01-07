@@ -7,11 +7,11 @@ import {
 } from "./CardMakerTypes"
 
 let testSetOfArtObj = {
-    cloud: ""
+    cloud: "cloud.png"
 }
 
 let testArtObj: CanvasElement = {
-    id: 1,
+    id: 3,
     type: "artObj",
     width: 150,
     height: 150,
@@ -37,35 +37,31 @@ let testImg: CanvasElement = {
 let testText: CanvasElement = {
     id: 2,
     type: "text",
+    text: "Happy birthday!",
+    fontFamily: "Arial",
     width: 150,
     height: 150,
     posX: 0,
     posY: 0,
-    text: {
-        text: "Happy birthday!",
-        size: 30,
-        fontFamily: "Arial",
-        bold: true,
-        italic: true,
-        underline: true,
-    }
+    size: 30,
+    bold: true,
+    italic: true,
+    underline: true,
 }
 
 let zeroElement: CanvasElement = {
     id: 0,
     type: "text",
+    text: "",
+    fontFamily: "",
     width: 0,
     height: 0,
     posX: 0,
     posY: 0,
-    text: {
-        text: "",
-        size: 0,
-        fontFamily: "",
-        bold: false,
-        italic: false,
-        underline: false,
-    }
+    size: 0,
+    bold: false,
+    italic: false,
+    underline: false,
 }
 
 let testBackgound: Background = {
@@ -82,7 +78,7 @@ export let testCanvas: CanvasUnit = {
     width: 800,
     height: 600,
     currentFilter: testFilter,
-    elementList: [zeroElement, testImg, testText],
+    elementList: [zeroElement, testImg, testText, testArtObj],
     background: testBackgound,
 }
 

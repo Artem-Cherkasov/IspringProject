@@ -2,7 +2,7 @@ import styles from './SrcInsertField.module.css'
 
 function SrcInsertField() {
     return (
-        <input placeholder="Вставьте ссылку на изображение" className={styles.srcinsertfield}/>
+        <input placeholder="Cсылка на изображение" className={styles.srcinsertfield}/>
     )
 }
 

@@ -15,13 +15,13 @@
 {
     font-weight: 500;
     margin-left: 7px;
-    margin-top: 52px;
+    margin-top: 12px;
 }
 
 .canvaseditorbottom
 {
     background-color: #99ff99;	
-	margin-top: 31px;
+	margin-top: 8px;
 	border-top: 1px solid black;
     border-bottom: 1px solid black;
 }
@@ -36,8 +36,19 @@
     height: 21px;
     width: 50px;
     margin-left: 7px;
-    margin-top: 50px;
-    background-color: #ccffcc; 
-    border: 2px solid black;
+    margin-top: 10px;
     outline: none;
+}
+
+.newcanvas
+{
+    margin-top: 12px;
+    margin-left: 27px;
+}
+
+.templateselect
+{
+    outline: none;
+    margin-left: 8px;
+    margin-top: 10px
 }

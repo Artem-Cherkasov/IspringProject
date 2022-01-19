@@ -6,6 +6,7 @@ import TopMenu from './TopMenu/TopMenu';
 import {testCanvas} from '../TestData';
 import { CardMakerType } from '../CardMakerTypes';
 import Filter from './Filter/Filter';
+import { addCanvasInHistory, dispatch, getCardMaker, Redo, Undo } from '../editor';
 
 type CardMakerProps = {
     cardMaker: CardMakerType,

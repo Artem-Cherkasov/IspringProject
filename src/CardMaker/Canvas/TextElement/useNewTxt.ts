@@ -1,5 +1,5 @@
 import { RefObject, useEffect } from "react";
-import { dispatch, editTxt } from "../../../editor";
+import { addCanvasInHistory, deleteElement, dispatch, editTxt, getCardMaker } from "../../../editor";
 
 
 export function useNewTxt(
@@ -19,7 +19,13 @@ export function useNewTxt(
                 if (currentElement) {
                     currentElement.setAttribute("contenteditable", "false")
                     const content: string = currentElement.innerHTML;
-                    dispatch(editTxt, {id: id, text: content})   
+                    if (content !== "") {
+                        dispatch(addCanvasInHistory, getCardMaker().canvas)
+                        dispatch(editTxt, {id: id, text: content})
+                    } else {
+                        dispatch(addCanvasInHistory, getCardMaker().canvas)
+                        dispatch(deleteElement, id)
+                    }
                 }
               }
 

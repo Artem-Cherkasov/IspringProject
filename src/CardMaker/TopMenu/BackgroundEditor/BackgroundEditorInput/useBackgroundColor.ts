@@ -1,12 +1,11 @@
 import { RefObject, useEffect } from 'react';
-import { dispatch, editBackgroundColor, getCardMaker } from '../../../../editor';
+import { addCanvasInHistory, dispatch, editBackgroundColor, getCardMaker } from '../../../../editor';
 
 export function useBackgroundColor(inputColor: RefObject<HTMLInputElement>): void {
 
-    const currentColor = getCardMaker().canvas.background.color
-
     useEffect(() => {
 
+        const currentColor = getCardMaker().canvas.background.color
         const fieldColor = inputColor.current;
 
         if (fieldColor) fieldColor.value = String(currentColor)
@@ -14,6 +13,7 @@ export function useBackgroundColor(inputColor: RefObject<HTMLInputElement>): voi
         function handlerOnChange() {
             if (fieldColor) {
                 const color: string = String(fieldColor.value)
+                dispatch(addCanvasInHistory, getCardMaker().canvas)
                 dispatch(editBackgroundColor, color)
             }
         }
@@ -23,6 +23,6 @@ export function useBackgroundColor(inputColor: RefObject<HTMLInputElement>): voi
         return () => {
             if (fieldColor) fieldColor.removeEventListener("change", handlerOnChange)
         };
-    }, [inputColor, dispatch, editBackgroundColor, currentColor])
+    }, [inputColor, dispatch, editBackgroundColor])
 
 }

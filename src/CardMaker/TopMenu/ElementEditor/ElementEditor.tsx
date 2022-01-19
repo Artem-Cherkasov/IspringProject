@@ -24,7 +24,7 @@ function ElementEditor() {
                 <input ref={inputWidth} type="number" className={styles.imgsizefield} placeholder="Ширина" min={0} defaultValue={300}></input>
             </div>
             <ElementEditorButton buttonName={'Удалить'} />
-            <div className={styles.elementeditorbottom}><div className={styles.elementeditordescription}>Выбранный элемент</div></div>
+            <div className={styles.elementeditorbottom}><div className={styles.elementeditordescription}>Элемент</div></div>
         </div>
     )
 }

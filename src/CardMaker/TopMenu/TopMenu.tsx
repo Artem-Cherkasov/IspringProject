@@ -4,6 +4,7 @@ import ArtObjectEditor from './ArtObjectEditor/ArtObjectEditor';
 import BackgroundEditor from './BackgroundEditor/BackgroundEditor';
 import CanvasEditor from './CanvasEditor/CanvasEditor';
 import ElementEditor from './ElementEditor/ElementEditor';
+import ExportMenu from './ExportMenu/ExportMenu';
 import FilterEditor from './FilterEditor/FilterEditor';
 import ImgEditor from './ImgEditor/ImgEditor';
 import TextEditor from './TextEditor/TextEditor'
@@ -19,6 +20,7 @@ function TopMenu() {
             <BackgroundEditor />
             <FilterEditor />
             <CanvasEditor />
+            <ExportMenu />
         </div>  
     );
 }

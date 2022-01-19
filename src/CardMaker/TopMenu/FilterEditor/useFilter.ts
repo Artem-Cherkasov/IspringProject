@@ -1,14 +1,14 @@
 import { RefObject, useEffect } from "react";
-import { dispatch, editFilter, getCardMaker } from "../../../editor";
+import { addCanvasInHistory, dispatch, editFilter, getCardMaker } from "../../../editor";
 
 
 export function useFilter(
     inputColor: RefObject<HTMLInputElement>,
     inputOpacity: RefObject<HTMLInputElement>): void {
-        const currentColor = getCardMaker().canvas.currentFilter.color
 
         useEffect(() => {
 
+            const currentColor = getCardMaker().canvas.currentFilter.color
             const fieldColor = inputColor.current;
             const fieldOpacity = inputOpacity.current;
 
@@ -18,6 +18,7 @@ export function useFilter(
                 if (fieldColor && fieldOpacity) {
                     const color: string = String(fieldColor.value)
                     const opacity: number = Number(fieldOpacity.value) / 10
+                    dispatch(addCanvasInHistory, getCardMaker().canvas)
                     dispatch(editFilter, {newColor: color, newTransperancy: opacity})
                 }
             }
@@ -29,5 +30,5 @@ export function useFilter(
                 if (fieldColor) fieldColor.removeEventListener("change", handlerOnChange);
                 if (fieldOpacity) fieldOpacity.removeEventListener("change", handlerOnChange);
             };
-        }, [inputColor, inputOpacity, dispatch, editFilter, currentColor])
+        }, [inputColor, inputOpacity, dispatch, editFilter])
     }

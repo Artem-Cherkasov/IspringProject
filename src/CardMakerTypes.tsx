@@ -49,6 +49,7 @@ export type TextConst = {
     readonly type: 'text',
     readonly text: string,
     readonly fontFamily: string,
+    readonly color: string,
     readonly width: number,
     readonly height: number,
     readonly posX: number,

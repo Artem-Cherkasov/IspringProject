@@ -1,19 +1,32 @@
-import React, { useRef } from 'react';
-import ReactDOM from 'react-dom';
+import { useRef } from 'react';
 import { getCardMaker } from '../../../editor';
 import AddTextButton from './AddTextButton/AddTextButton';
-import StyleButton from './StyleButton/StyleButton';
+import BoldTextButton from './BoldTextButton/BoldTextButton';
+import ItalicTextButton from './ItalicTextButton/ItalicTextButton';
 import styles from './TextEditor.module.css'
+import UnderlineTextButton from './UnderlineTextButton/UnderlineTextButton';
 import { useNewFont } from './useNewFont';
+import { useNewTextColor } from './useNewTextColor';
+import { useNewTextSize } from './useNewTextSize';
 
 function TextEditor() {
 
     const selectElement = useRef<HTMLSelectElement>(null);
     const id = getCardMaker().selectedElements[0]
+    const inputSizeField = useRef<HTMLInputElement>(null);
+    const colorTextField = useRef<HTMLInputElement>(null);
 
     useNewFont(
         id,
         selectElement
+    )
+
+    useNewTextSize(
+        inputSizeField 
+    )
+
+    useNewTextColor(
+        colorTextField 
     )
 
     return(
@@ -28,11 +41,12 @@ function TextEditor() {
                 <AddTextButton />
             </div>
             <div className={styles.texteditormiddle}>
-                <input type="number" className={styles.sizefield} defaultValue={12}></input> 
+                <input ref={inputSizeField} type="number" className={styles.sizefield} defaultValue={30}></input> 
                 <div className={styles.textstylebuttons}>
-                    <div className={styles.stylebutton}><div className={styles.text}>B</div></div>
-                    <div className={styles.stylebutton}><div className={styles.text}>I</div></div>
-                    <div className={styles.stylebutton}><div className={styles.text}>U</div></div>
+                    <input ref={colorTextField} type="color" className={styles.textcolor} defaultValue="#000000"/>
+                    <BoldTextButton /> 
+                    <ItalicTextButton />
+                    <UnderlineTextButton />
                 </div>          
             </div>
             <div className={styles.texteditorbottom}><div className={styles.texteditordescription}>Текст</div></div>

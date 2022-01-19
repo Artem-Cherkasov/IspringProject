@@ -39,6 +39,7 @@ let testText: CanvasElement = {
     type: "text",
     text: "Happy birthday!",
     fontFamily: "Arial",
+    color: "#000000",
     width: 150,
     height: 150,
     posX: 0,
@@ -54,6 +55,7 @@ let zeroElement: CanvasElement = {
     type: "text",
     text: "",
     fontFamily: "",
+    color: "#000000",
     width: 0,
     height: 0,
     posX: 0,
@@ -65,7 +67,7 @@ let zeroElement: CanvasElement = {
 }
 
 let testBackgound: Background = {
-    color: "#99ffcc",
+    color: "#ffffff",
     src: null,
 }
 
@@ -78,7 +80,7 @@ export let testCanvas: CanvasUnit = {
     width: 800,
     height: 600,
     currentFilter: testFilter,
-    elementList: [zeroElement, testImg, testText, testArtObj],
+    elementList: [zeroElement],
     background: testBackgound,
 }
 
@@ -86,7 +88,32 @@ export let testCardMaker: CardMakerType = {
     canvas: testCanvas,
     history: {
         canvasState: [],
-        stateId: 1,
+        stateId: 0,
+    },
+    templates: [],
+    filterList: [],
+    selectedElements: [0]
+}
+
+export let standartCanvas: CanvasUnit = {
+    width: 800,
+    height: 600,
+    currentFilter: {
+        color: '#ffffff',
+        transparency: 0,
+    },
+    elementList: [zeroElement],
+    background: {
+        color: '#ffffff',
+        src: null,
+    },
+}
+
+export let standartCardMaker: CardMakerType = {
+    canvas: standartCanvas,
+    history: {
+        canvasState: [],
+        stateId: 0,
     },
     templates: [],
     filterList: [],

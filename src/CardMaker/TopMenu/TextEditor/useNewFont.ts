@@ -1,5 +1,5 @@
 import { RefObject, useEffect } from "react";
-import { dispatch, editFontFamily } from "../../../editor";
+import { addCanvasInHistory, dispatch, editFontFamily, getCardMaker } from "../../../editor";
 
 
 export function useNewFont(
@@ -13,6 +13,7 @@ export function useNewFont(
             function handlerOnChange(event: Event): void {
                 if (fieldElement) {
                     const target = event.target as HTMLOptionElement;
+                    dispatch(addCanvasInHistory, getCardMaker().canvas)
                     dispatch(editFontFamily, { id: id, newFont: target.value })
                 }
             }

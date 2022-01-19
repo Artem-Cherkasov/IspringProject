@@ -2,14 +2,14 @@
 {
     background-color: #99ff99;	
 	height: 130px;
-	width: 305px;
+	width: 150px;
 	border-right: 1px solid black;
 }
 
 .elementeditorbottom 
 {
 	background-color: #99ff99;	
-	margin-top: 5px;
+	margin-top: 17px;
 	border-top: 1px solid black;
     border-bottom: 1px solid black;
 }
@@ -25,16 +25,14 @@
 {
     height: 21px;
     width: 50px;
-    margin-left: 10px;
+    margin-left: 5px;
     outline: none;
     margin-right: 5px;
-    background-color: #ccffcc; 
-    border: 2px solid black;
 }
 
 .multiplication 
 {
-    margin-left: 5px;
+    margin-right: 2px;
     font-weight: 500;
     margin-top: 2px;
 }

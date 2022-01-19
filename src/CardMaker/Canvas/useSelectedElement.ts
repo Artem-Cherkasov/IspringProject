@@ -16,13 +16,14 @@ export function useSelectedElements(
 
         function handlerOnKey(): void {
             dispatch(resetSelected, {})
+            dispatch(selectingElement, 0)
         }
 
-        document.addEventListener("ctrl", handlerOnKey);
+        document.addEventListener("mouseup", handlerOnKey);
         if (currentElement) currentElement.addEventListener("click", handlerOnClick);
 
         return () => {
-            document.removeEventListener("ctrl", handlerOnKey);
+            document.removeEventListener("mouseup", handlerOnKey);
             if (currentElement) currentElement.removeEventListener("click", handlerOnClick);
         }
 

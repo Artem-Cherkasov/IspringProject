@@ -1,9 +1,11 @@
 import { type } from "os"
-import { CardMakerType, TextConst } from "./CardMakerTypes"
-import { testCardMaker } from "./TestData"
+import { ActionHistory, CanvasElement, CanvasUnit, CardMakerType, TextConst } from "./CardMakerTypes"
+import { CollectionOfJson } from "./JSONCollection"
+import { standartCardMaker, testCardMaker } from "./TestData"
 
 let cardMaker: CardMakerType = testCardMaker
 let editorChangeHandler: any = null
+let nCardMaker: CardMakerType = standartCardMaker
 
 export function getCardMaker() {
     return cardMaker
@@ -114,6 +116,7 @@ export function createTextElement(cardMaker: CardMakerType, newId: number): Card
                     type: 'text',
                     text: 'Новый текст',
                     fontFamily: 'Calibri',
+                    color: "#000000",
                     width: standartWidthElement,
                     height: standartHeightElement,
                     posX: cardMaker.canvas.width / 2,
@@ -247,8 +250,9 @@ export function editTxt(cardMaker: CardMakerType, { id, text }: editTxtParam): C
 }
 
 enum CollectionOfArtObject {
-    cloud = 'cloud.png',
-    sun = 'Happy_Cloud.svg'
+    cloud = 'Happy_Cloud.svg',
+    present = 'xmas02.svg',
+    сhristmasTree = 'xmas_tree.svg'
 }
 
 type createArtObjElementParam = {
@@ -262,8 +266,10 @@ export function createArtObjElement(cardMaker: CardMakerType, { newId, type }: c
 
     if (type == 'cloud') {
         type = CollectionOfArtObject.cloud;
-    } else if (type == 'sun') {
-        type = CollectionOfArtObject.sun
+    } else if (type == 'present') {
+        type = CollectionOfArtObject.present
+    } else if (type == 'сhristmasTree') {
+        type = CollectionOfArtObject.сhristmasTree
     }
 
     return {
@@ -294,7 +300,6 @@ type editFontFamilyParam = {
 }
 
 export function editFontFamily(cardMaker: CardMakerType, { id, newFont }: editFontFamilyParam): CardMakerType {
-    console.log(id, newFont)
     return {
         ...cardMaker,
         canvas: {
@@ -323,4 +328,211 @@ export function addBackgroundImg(cardMaker: CardMakerType, newSrc: string): Card
             },    
         }
     };
+}
+
+export function newCanvas(): CardMakerType {
+    cardMaker = nCardMaker
+    return cardMaker
+}
+
+
+export function applyTemplate(cardMaker: CardMakerType, template: string): CardMakerType {
+
+    if (template == "NewYearCard") {
+        template = CollectionOfJson.newYearJson
+    } else if (template == "BirthDayCard") {
+        template = CollectionOfJson.happyBirthdayJson
+    }
+
+    const tCardMaker: CardMakerType = JSON.parse(template)
+    cardMaker = tCardMaker
+    return cardMaker
+}
+
+type setBoldTextParam = {
+    id: number,
+    isBold: boolean
+}
+
+export function setBoldText(cardMaker: CardMakerType, { id, isBold }: setBoldTextParam): CardMakerType {
+    return {
+        ...cardMaker,
+        canvas: {
+            ...cardMaker.canvas,
+            elementList: cardMaker.canvas.elementList.map(element => {
+                if (element.id == id) {
+                    return {
+                        ...element,
+                        bold: isBold,
+                    }
+                }
+                return {...element}
+            })
+        }
+    };
+}
+
+
+type setItalicTextParam = {
+    id: number,
+    isItalic: boolean
+}
+
+export function setItalicText(cardMaker: CardMakerType, { id, isItalic }: setItalicTextParam): CardMakerType {
+    return {
+        ...cardMaker,
+        canvas: {
+            ...cardMaker.canvas,
+            elementList: cardMaker.canvas.elementList.map(element => {
+                if (element.id == id) {
+                    return {
+                        ...element,
+                        italic: isItalic,
+                    }
+                }
+                return {...element}
+            })
+        }
+    };
+}
+
+type setUnderlinedTextParam = {
+    id: number,
+    isUnderlined: boolean
+}
+
+export function setUnderlinedText(cardMaker: CardMakerType, { id, isUnderlined }: setUnderlinedTextParam): CardMakerType {
+    return {
+        ...cardMaker,
+        canvas: {
+            ...cardMaker.canvas,
+            elementList: cardMaker.canvas.elementList.map(element => {
+                if (element.id == id) {
+                    return {
+                        ...element,
+                        underline: isUnderlined,
+                    }
+                }
+                return {...element}
+            })
+        }
+    };
+}
+
+type editSizeTextParam = {
+    id: number,
+    size: number
+}
+
+export function editSizeText(cardMaker: CardMakerType, { id, size }: editSizeTextParam): CardMakerType {
+    return {
+        ...cardMaker,
+        canvas: {
+            ...cardMaker.canvas,
+            elementList: cardMaker.canvas.elementList.map(element => {
+                if (element.id == id) {
+                    return {
+                        ...element,
+                        size,
+                    }
+                }
+                return {...element}
+            })
+        }
+    };
+}
+
+type editTextColorParam = {
+    id: number,
+    color: string
+}
+
+export function editTextColor(cardMaker: CardMakerType, { id, color }: editTextColorParam): CardMakerType {
+    return {
+        ...cardMaker,
+        canvas: {
+            ...cardMaker.canvas,
+            elementList: cardMaker.canvas.elementList.map(element => {
+                if (element.id == id) {
+                    return {
+                        ...element,
+                        color,
+                    }
+                }
+                return {...element}
+            })
+        }
+    };
+}
+
+export function deleteElement(cardMaker: CardMakerType, id: number): CardMakerType {
+    if (cardMaker.canvas.elementList.length > 1) {
+        const newElementList: CanvasElement[] = cardMaker.canvas.elementList.filter((element) => { return element.id !== id });
+        const newCard: CardMakerType = {
+            canvas: {
+                width: cardMaker.canvas.width,
+                height: cardMaker.canvas.height,
+                currentFilter: cardMaker.canvas.currentFilter,
+                elementList: newElementList,
+                background: cardMaker.canvas.background
+            },
+            history: cardMaker.history,
+            templates: cardMaker.templates,
+            filterList: cardMaker.filterList,
+            selectedElements: cardMaker.selectedElements
+        }
+
+        return cardMaker = newCard
+    } else {
+        return cardMaker
+    }
+}
+
+export function addCanvasInHistory(cardMaker: CardMakerType, newCanvas: CanvasUnit): CardMakerType {
+    let history: ActionHistory = cardMaker.history;
+    let newStateList: CanvasUnit[] = cardMaker.history.canvasState;
+    history.canvasState.length = history.stateId
+    newStateList.push(newCanvas);
+    return {
+        ...cardMaker,
+        history: {
+            stateId: history.stateId + 1,
+            canvasState: newStateList,
+        }
+    }
+}
+
+export function Undo(cardMaker: CardMakerType): CardMakerType {
+    let undoCanvas: CanvasUnit = cardMaker.canvas
+    let newStateId: number = cardMaker.history.stateId
+    if (cardMaker.history.canvasState.length == cardMaker.history.stateId){
+        addCanvasInHistory(cardMaker, cardMaker.canvas)
+    }
+    undoCanvas = cardMaker.history.canvasState[cardMaker.history.stateId - 1]
+    newStateId -= 1
+
+    return {
+        ...cardMaker,
+        canvas: undoCanvas,
+        history: {
+            ...cardMaker.history,
+            stateId: newStateId,
+        }
+    }
+}
+
+export function Redo(cardMaker: CardMakerType): CardMakerType {
+    let newStateId: number = cardMaker.history.stateId + 1
+    const redoCanvas = cardMaker.history.canvasState[cardMaker.history.stateId + 1]
+    if (newStateId == cardMaker.history.canvasState.length - 1) {
+        cardMaker.history.canvasState.pop()
+    }
+    return {
+        ...cardMaker,
+        canvas: redoCanvas,
+        history: {
+            ...cardMaker.history,
+            stateId: newStateId,
+        }
+    }
 }

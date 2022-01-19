@@ -1,5 +1,5 @@
 import { RefObject, useEffect } from 'react';
-import { dispatch, editCanvasSize, getCardMaker } from '../../../editor';
+import { addCanvasInHistory, dispatch, editCanvasSize, getCardMaker } from '../../../editor';
 
 let width: number;
 let height: number
@@ -19,7 +19,7 @@ export function useCanvasSize(
         if (fieldWidth) fieldWidth.value = String(currentWidth)
         if (fieldHeight) fieldHeight.value = String(currentHeight)
 
-        function handleOnBlur(): void {
+        function handleOnChange(): void {
             if (fieldWidth && fieldHeight) {    
                 width = Number(fieldWidth.value);
                 height = Number(fieldHeight.value);
@@ -27,16 +27,17 @@ export function useCanvasSize(
                 if (height < 500) height = 500
                 if (width > 1400) width = 1400
                 if (height > 800) height = 800
+                dispatch(addCanvasInHistory, getCardMaker().canvas)
                 dispatch(editCanvasSize, {newWidth: width, newHeight: height})
             }
         }
 
-        if (fieldWidth) fieldWidth.addEventListener("blur", handleOnBlur);
-        if (fieldHeight) fieldHeight.addEventListener("blur", handleOnBlur);
+        if (fieldWidth) fieldWidth.addEventListener("change", handleOnChange);
+        if (fieldHeight) fieldHeight.addEventListener("change", handleOnChange);
 
         return () => {
-            if (fieldWidth) fieldWidth.removeEventListener("blur", handleOnBlur);
-            if (fieldHeight) fieldHeight.removeEventListener("blur", handleOnBlur);
+            if (fieldWidth) fieldWidth.removeEventListener("change", handleOnChange);
+            if (fieldHeight) fieldHeight.removeEventListener("change", handleOnChange);
         };
     }, [inputWidth, inputHeight, dispatch, editCanvasSize, currentHeight, currentWidth])
 }

@@ -1,6 +1,5 @@
 import { useRef } from "react";
 import styles from "./ImgEditor.module.css"
-import SrcInsertField from "./SrcInsertField/SrcInsertField";
 import { useImgFile } from "./useImgFile";
 
 
@@ -15,9 +14,7 @@ function ImgEditor() {
 
     return (
         <div className={styles.imgeditor}>
-            <div className={styles.imgeditortop}>
-                <SrcInsertField />
-            </div>
+
             <div className={styles.imgeditorsizefield}>
                 <input type="file" ref={inputFile} className={styles.insertingfromPCbutton} accept=".jpg,.png,.jpeg"></input>
             </div>

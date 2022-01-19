@@ -1,5 +1,5 @@
 import { RefObject, useEffect } from "react";
-import { dispatch, editElementSize, getCardMaker } from "../../../editor";
+import { addCanvasInHistory, dispatch, editElementSize, getCardMaker } from "../../../editor";
 
 
 let width: number;
@@ -24,6 +24,7 @@ export function useElementSize(
                     if (height < 50) height = 50
                     if (width > getCardMaker().canvas.width) width = getCardMaker().canvas.width - getCardMaker().canvas.elementList[elementId].posX
                     if (height > getCardMaker().canvas.width) height = getCardMaker().canvas.height - getCardMaker().canvas.elementList[elementId].posY
+                    dispatch(addCanvasInHistory, getCardMaker().canvas)
                     dispatch(editElementSize, {id: id, width: width, height: height})
                     fieldHeight.value = String(getCardMaker().canvas.elementList[elementId].height)
                     fieldWidth.value = String(getCardMaker().canvas.elementList[elementId].width) 

@@ -1,10 +1,7 @@
 import { RefObject, useEffect } from "react";
-import { createArtObjElement, dispatch, getCardMaker } from "../../../editor";
-
-let type: string
+import { addCanvasInHistory, createArtObjElement, dispatch, getCardMaker } from "../../../editor";
 
 export function useNewArtObj(
-    id: number,
     selectElement: RefObject<HTMLSelectElement>): void {
 
 
@@ -13,8 +10,10 @@ export function useNewArtObj(
             const fieldElement = selectElement.current
 
             function handlerOnChange(event: Event): void {
+                const id = getCardMaker().canvas.elementList[getCardMaker().canvas.elementList.length - 1].id + 1
                 if (fieldElement) {
                     const target = event.target as HTMLOptionElement;
+                    dispatch(addCanvasInHistory, getCardMaker().canvas)
                     dispatch(createArtObjElement, { newId: id, type: target.value })
                     target.value = ""
                 }
@@ -25,5 +24,5 @@ export function useNewArtObj(
             return () => {
                 if (fieldElement) fieldElement.removeEventListener("change", handlerOnChange)
             }
-        }, [id, selectElement, dispatch, createArtObjElement])
+        }, [selectElement, dispatch, createArtObjElement])
     }

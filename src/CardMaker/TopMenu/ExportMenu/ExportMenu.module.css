@@ -1,0 +1,28 @@
+.exportmenu
+{
+    height: 130px;
+    width: 154px;
+    background-color: #99ff99;	
+    border-left: 1px solid black;
+}
+
+.exportbutton
+{
+    margin-top: 50px;
+    margin-left: 28px;
+    height: 20px;
+    width: 100px;
+}
+
+.exportmenubottom
+{
+    background-color: #99ff99;	
+	margin-top: 38px;
+	border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.exportmenudescription
+{
+    margin-left: 50px;
+}

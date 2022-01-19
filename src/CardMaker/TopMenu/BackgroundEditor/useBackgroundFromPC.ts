@@ -1,5 +1,5 @@
 import { RefObject, useEffect } from "react";
-import { addBackgroundImg, dispatch, getCardMaker } from "../../../editor";
+import { addBackgroundImg, addCanvasInHistory, dispatch, editCanvasSize, getCardMaker } from "../../../editor";
 import { imgReader } from "../ImgEditor/imgInsert";
 
 
@@ -13,8 +13,8 @@ export function useBackgroundFromPC(inputFile: RefObject<HTMLElement>): void {
             const target = event.target as HTMLInputElement;
             const files = target.files as FileList;
             const fileInfo = await imgReader(files[0])
-            fileInfo.height = getCardMaker().canvas.height
-            fileInfo.width = getCardMaker().canvas.width
+            dispatch(addCanvasInHistory, getCardMaker().canvas)
+            dispatch(editCanvasSize, {newWidth: fileInfo.width, newHeight: fileInfo.height})
             dispatch(addBackgroundImg, fileInfo.src)
         }
 

@@ -1,6 +1,8 @@
 import { useRef } from 'react'
 import { CanvasElement, ImgConst } from '../../../CardMakerTypes'
+import { getCardMaker } from '../../../editor';
 import { useDragnDrop } from '../useDragnDrop';
+import { useResize } from '../useResize';
 import { useSelectedElements } from '../useSelectedElement';
 import styles from './ImgElement.module.css'
 
@@ -14,6 +16,8 @@ function ImgElement(props: ImgElementProps) {
     const posX = props.imgElement.posX
     const posY = props.imgElement.posY
     const imgElement = useRef<HTMLImageElement>(null);
+    const resizeElement = useRef<HTMLDivElement>(null)
+    const selection = getCardMaker().selectedElements[0] === id ? styles.selected : "" 
 
     useSelectedElements(
         id,
@@ -27,6 +31,11 @@ function ImgElement(props: ImgElementProps) {
         posY
     )
 
+    useResize(
+        id,
+        resizeElement
+    )
+
     const style = {
         top: props.imgElement.posY,
         left: props.imgElement.posX,
@@ -36,7 +45,10 @@ function ImgElement(props: ImgElementProps) {
     }
 
     return(
-        <img ref={imgElement} src={style.src} alt="" className={styles.element} style={style}/>
+        <div ref={imgElement} className={styles.element + " " + selection}  style={style}>
+            <img id='img' src={style.src} alt="" style={style}/>
+            <div ref={resizeElement} className={styles.dot}></div>
+        </div>
     )
 }
 

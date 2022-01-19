@@ -40,15 +40,16 @@ function TextElement(props: TextElementProps) {
     const style = {
         top: props.textElement.posY,
         left: props.textElement.posX,
-        fontSize: props.textElement.size,
-        fontWeight: props.textElement.bold ? 700 : 400,
-        textDecoration: props.textElement.underline ? 'underline' : 'none',
-        fontStyle: props.textElement.italic ? 'italic' : 'none',
-        fontFamily: props.textElement.fontFamily
+        fontSize: props.textElement.size + "px",
+        fontWeight: props.textElement.bold ? 900 : 400,
+        textDecoration: props.textElement.underline ? 'underline' : '',
+        fontStyle: props.textElement.italic ? 'italic' : '',
+        fontFamily: props.textElement.fontFamily,
+        color: props.textElement.color
     }
 
     return(
-        <div ref={textElement} contentEditable={false} className={styles.element} style={style} dangerouslySetInnerHTML={{ __html: props.textElement.text }}></div>
+        <div id='text' ref={textElement} contentEditable={false} className={styles.element} style={style} dangerouslySetInnerHTML={{ __html: props.textElement.text }}></div>
     );
 }
 

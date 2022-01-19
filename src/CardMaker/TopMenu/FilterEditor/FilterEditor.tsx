@@ -1,7 +1,5 @@
 import { useRef } from 'react';
 import styles from './FilterEditor.module.css'
-import FilterEditorButton from './FilterEditorButton/FilterEditorButton';
-import FilterEditorField from './FilterEditorField/FilterEditorField';
 import { useFilter } from './useFilter';
 
 function FilterEditor() {

@@ -25,8 +25,8 @@ export function useCanvasSize(
                 height = Number(fieldHeight.value);
                 if (width < 500) width = 500
                 if (height < 500) height = 500
-                if (width > 1400) width = 1400
-                if (height > 800) height = 800
+                if (width > 1800) width = 1800
+                if (height > 900) height = 900
                 dispatch(addCanvasInHistory, getCardMaker().canvas)
                 dispatch(editCanvasSize, {newWidth: width, newHeight: height})
             }

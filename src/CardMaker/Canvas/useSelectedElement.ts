@@ -19,11 +19,11 @@ export function useSelectedElements(
             dispatch(selectingElement, 0)
         }
 
-        document.addEventListener("mouseup", handlerOnKey);
+        document.addEventListener("keydown", handlerOnKey);
         if (currentElement) currentElement.addEventListener("click", handlerOnClick);
 
         return () => {
-            document.removeEventListener("mouseup", handlerOnKey);
+            document.removeEventListener("keydown", handlerOnKey);
             if (currentElement) currentElement.removeEventListener("click", handlerOnClick);
         }
 

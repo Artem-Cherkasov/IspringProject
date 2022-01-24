@@ -12,10 +12,17 @@ export function useBackgroundFromPC(inputFile: RefObject<HTMLElement>): void {
         async function handlerOnChange(event: Event): Promise<void> {
             const target = event.target as HTMLInputElement;
             const files = target.files as FileList;
-            const fileInfo = await imgReader(files[0])
-            dispatch(addCanvasInHistory, getCardMaker().canvas)
-            dispatch(editCanvasSize, {newWidth: fileInfo.width, newHeight: fileInfo.height})
-            dispatch(addBackgroundImg, fileInfo.src)
+            if (files[0]) {
+                const fileInfo = await imgReader(files[0])
+                dispatch(addCanvasInHistory, getCardMaker().canvas)
+                let resize: boolean = window.confirm("Изменить ли размер холста по размеру картинки?")
+                if (resize) {
+                    dispatch(editCanvasSize, {newWidth: fileInfo.width, newHeight: fileInfo.height})
+                    dispatch(addBackgroundImg, fileInfo.src)    
+                } else {
+                    dispatch(addBackgroundImg, fileInfo.src) 
+                }    
+            }  
         }
 
         if (fieldFile) fieldFile.addEventListener("change", handlerOnChange);

@@ -9,14 +9,13 @@
 .elementeditorbottom 
 {
 	background-color: #99ff99;	
-	margin-top: 17px;
+	margin-top: 18px;
 	border-top: 1px solid black;
     border-bottom: 1px solid black;
 }
 
 .elementeditordescription 
 {
-    margin-top: 1px;
     display: flex;
     justify-content: center;
 }

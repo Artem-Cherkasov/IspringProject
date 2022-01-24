@@ -44,18 +44,8 @@ function Canvas(props: CanvasProps) {
         } 
     });
 
-    function handlerOnUndoClick() {
-        if (getCardMaker().history.stateId !== 0) dispatch(Undo, {})
-    }
-    
-    function handlerOnRedoClick() {
-        if (getCardMaker().history.stateId !== getCardMaker().history.canvasState.length) dispatch(Redo, {})
-    }
-
     return(
         <div>
-            <button onClick={handlerOnUndoClick}>Назад</button>
-            <button onClick={handlerOnRedoClick}>Вперёд</button>
             <div className={styles.canvas} style={style} id="canvas">                        
                 <div className={styles.element}>{elementList}</div>
             </div>
